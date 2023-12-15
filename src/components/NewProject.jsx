@@ -19,7 +19,7 @@ const NewProject = () => {
         <input
           id="title"
           type="text"
-          className="mt-2.5 pl-1 mb-5 h-10 bg-[#d4cfc466] border-b-[#302f2d]-500 rounded-tl rounded-tr border-2 border-b-[#77736a] outline-none"
+          className="mt-2.5 pl-1 mb-5 h-10 bg-[#d4cfc466] text-[#77736a] border-b-[#302f2d]-500 rounded-tl rounded-tr border-2 border-b-[#77736a] outline-none"
         />
         <label
           htmlFor="description"
@@ -29,7 +29,7 @@ const NewProject = () => {
         </label>
         <textarea
           id="description"
-          className="mt-2.5 mb-5 pl-1 h-20 bg-[#d4cfc466] border-b-[#302f2d]-500 rounded-tl rounded-tr border-y border-b-[#d1d0cc] outline-none"
+          className="mt-2.5 mb-5 pl-1 h-20 bg-[#d4cfc466] text-[#77736a] border-b-[#302f2d]-500 rounded-tl rounded-tr border-y border-b-[#d1d0cc] outline-none"
         ></textarea>
         <label
           htmlFor="due-date"
@@ -40,7 +40,7 @@ const NewProject = () => {
         <input
           id="due-date"
           type="date"
-          className="mt-2.5 mb-5 h-10 bg-[#d4cfc466] border-b-[#302f2d]-500 rounded-tl rounded-tr border-2 border-b-[#77736a] outline-none"
+          className="mt-2.5 mb-5 h-10 bg-[#d4cfc466] text-[#77736a] border-b-[#302f2d]-500 rounded-tl rounded-tr border-2 border-b-[#77736a] outline-none"
         />
       </form>
     </section>
