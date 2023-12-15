@@ -1,6 +1,6 @@
 import noProjects from "../assets/no-projects.png";
 
-const NoProject = () => {
+const HomePage = () => {
   return (
     <div className="flex flex-col items-center absolute top-40 right-1/3">
       <img src={noProjects} alt="no-projects" className="h-24" />
@@ -17,4 +17,4 @@ const NoProject = () => {
   );
 };
 
-export default NoProject;
+export default HomePage;
