@@ -9,9 +9,23 @@ const DUMMY_ITEMS = [
   {
     id: "d1",
     title: "Learning React",
-    description: "Learn React from the group up.",
+    description:
+      "Learn React from the group up. Start with the basics, finish with advanced knowledge.",
     date: "Dec 29, 2024",
-    tasks: ["Practic, practic, practice!", "Learn advanced concepts"],
+    tasks: [
+      {
+        id: "t1",
+        title: "Practic, practic, practice!",
+      },
+      {
+        id: "t2",
+        title: "Learn advanced concepts",
+      },
+      {
+        id: "t3",
+        title: "Twice practic, practic, practice!",
+      },
+    ],
   },
   {
     id: "d2",
@@ -29,16 +43,19 @@ function App() {
     projectItem: false,
   });
 
+  const [selectedProjectId, setSelectedProjectId] = useState("");
+
   const handleAddProject = () => {
     setMainPage((prevPage) => {
       return { ...!prevPage, newProject: true };
     });
   };
 
-  const handleOpenProject = () => {
+  const handleOpenProject = (id) => {
     setMainPage((prevPage) => {
       return { ...!prevPage, projectItem: true };
     });
+    setSelectedProjectId(id);
   };
 
   return (
@@ -50,7 +67,9 @@ function App() {
       />
       {mainPage.homePage && <HomePage onAdd={handleAddProject} />}
       {mainPage.newProject && <NewProject />}
-      {mainPage.projectItem && <ProjectItem />}
+      {mainPage.projectItem && (
+        <ProjectItem items={DUMMY_ITEMS} projectId={selectedProjectId} />
+      )}
     </div>
   );
 }
