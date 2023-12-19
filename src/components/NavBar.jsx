@@ -16,7 +16,9 @@ const NavBar = ({ onAdd, onOpenProject, items }) => {
         <ul>
           {items.map((item) => (
             <li key={item.id} className="my-2.5 text-lg text-[#bbb9b5]">
-              <button onClick={onOpenProject}>{item.title}</button>
+              <button onClick={() => onOpenProject(item.id)}>
+                {item.title}
+              </button>
             </li>
           ))}
         </ul>
