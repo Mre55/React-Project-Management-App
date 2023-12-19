@@ -1,6 +1,6 @@
 import React from "react";
 
-const NavBar = ({ onAdd, onOpenProject }) => {
+const NavBar = ({ onAdd, onOpenProject, items }) => {
   return (
     <section className="pt-20 pl-12 absolute top-10 left-0 bg-zinc-900 rounded-tr-3xl min-h-screen w-1/4 text-gray-300">
       <div>
@@ -14,12 +14,11 @@ const NavBar = ({ onAdd, onOpenProject }) => {
       </div>
       <div className="mt-12">
         <ul>
-          <li className="my-2.5 text-lg text-[#bbb9b5]">
-            <button onClick={onOpenProject}>Learning React</button>
-          </li>
-          <li className="my-2.5 text-lg text-[#bbb9b5]">
-            <button onClick={onOpenProject}>Mastering React</button>
-          </li>
+          {items.map((item) => (
+            <li key={item.id} className="my-2.5 text-lg text-[#bbb9b5]">
+              <button onClick={onOpenProject}>{item.title}</button>
+            </li>
+          ))}
         </ul>
       </div>
     </section>
