@@ -1,26 +1,29 @@
 import React, { useState, useRef } from "react";
 
-const NewProject = () => {
+const NewProject = ({ onSave }) => {
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
   const dateInputRef = useRef(null);
-  // const [message, setMessage] = useState("");
 
   const handleSubmit = (event) => {
-    console.log("submit button is clicked");
     event.preventDefault();
 
     const selectedDate = dateInputRef.current.value;
-    console.log("Selected Date:", selectedDate);
+    const dateObject = new Date(selectedDate);
 
-    console.log("title ", titleRef.current.value);
-    console.log("description  ", descriptionRef.current.value);
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const formattedDate = dateObject.toLocaleDateString("en-US", options);
 
-    // setMessage(
-    //   `title ${titleRef.current.value}, description ${descriptionRef.current.value}, date${dat}`
-    // );
-
-    event.target.reset();
+    onSave({
+      id: new Date(),
+      title: titleRef.current.value,
+      description: descriptionRef.current.value,
+      date: formattedDate,
+    });
   };
 
   return (
@@ -29,13 +32,8 @@ const NewProject = () => {
       onSubmit={handleSubmit}
     >
       <div className="flex justify-end mb-8 gap-x-5">
-        <button type="button" className="text-lg text-[#302f2d]">
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="h-12 w-24 rounded-lg text-lg font-normal bg-[#272521] text-[#fff]"
-        >
+        <button className="text-lg text-[#302f2d]">Cancel</button>
+        <button className="h-12 w-24 rounded-lg text-lg font-normal bg-[#272521] text-[#fff]">
           Save
         </button>
       </div>
@@ -70,6 +68,7 @@ const NewProject = () => {
           DUE DATE
         </label>
         <input
+          ref={dateInputRef}
           id="due-date"
           type="date"
           className="mt-2.5 mb-5 h-10 bg-[#d4cfc466] text-[#77736a] border-b-[#302f2d]-500 rounded-tl rounded-tr border-2 border-b-[#77736a] outline-none"
