@@ -4,37 +4,7 @@ import NavBar from "./components/NavBar";
 import HomePage from "./components/HomePage";
 import NewProject from "./components/NewProject";
 import ProjectItem from "./components/ProjectItem";
-
-const DUMMY_ITEMS = [
-  {
-    id: "d1",
-    title: "Learning React",
-    description:
-      "Learn React from the group up. Start with the basics, finish with advanced knowledge.",
-    date: "Dec 29, 2024",
-    tasks: [
-      {
-        id: "t1",
-        title: "Practic, practic, practice!",
-      },
-      {
-        id: "t2",
-        title: "Learn advanced concepts",
-      },
-      {
-        id: "t3",
-        title: "Twice practic, practic, practice!",
-      },
-    ],
-  },
-  {
-    id: "d2",
-    title: "Mastering React",
-    description: "Master React until the top.",
-    date: "Feb 12, 2024",
-    tasks: ["Master by practicing!", "Master advanced concepts"],
-  },
-];
+import { DUMMY_ITEMS } from "./util/data";
 
 function App() {
   const [mainPage, setMainPage] = useState({
