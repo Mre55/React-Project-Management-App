@@ -15,6 +15,13 @@ function App() {
 
   const [selectedProjectId, setSelectedProjectId] = useState("");
 
+  const handleNewProject = ({ id, title, description, date }) => {
+    console.log("the new project id is ", id);
+    console.log("the new project title is ", title);
+    console.log("the new project description is ", description);
+    console.log("the new project date is ", date);
+  };
+
   const handleAddProject = () => {
     setMainPage((prevPage) => {
       return { ...!prevPage, newProject: true };
@@ -36,7 +43,7 @@ function App() {
         items={DUMMY_ITEMS}
       />
       {mainPage.homePage && <HomePage onAdd={handleAddProject} />}
-      {mainPage.newProject && <NewProject />}
+      {mainPage.newProject && <NewProject onSave={handleNewProject} />}
       {mainPage.projectItem && (
         <ProjectItem items={DUMMY_ITEMS} projectId={selectedProjectId} />
       )}
