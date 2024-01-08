@@ -1,9 +1,7 @@
 import { useState } from "react";
 
 import ProjectsSidebar from "./components/ProjectsSideBar";
-import HomePage from "./components/NoProjectSelected";
 import NewProject from "./components/NewProject";
-import ProjectItem from "./components/ProjectItem";
 import { DUMMY_ITEMS } from "./util/data";
 import NoProjectSelected from "./components/NoProjectSelected";
 
@@ -15,17 +13,25 @@ function App() {
     projects: [],
   });
 
-  const handleNewProject = ({ id, title, description, date }) => {
-    setItems((prevItems) => {
-      return [...prevItems, { id, title, description, date }];
-    });
-  };
-
   const handleStartAddProject = () => {
     setProjectsState((prevState) => {
       return {
         ...prevState,
         selectedProjectId: null,
+      };
+    });
+  };
+
+  const handleAddProject = (projectData) => {
+    const newProject = {
+      ...projectData,
+      id: Math.random(),
+    };
+
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        projects: [...prevState.projects, newProject],
       };
     });
   };
@@ -37,10 +43,12 @@ function App() {
     setSelectedProjectId(id);
   };
 
+  console.log("projectsState is ", projectsState);
+
   let content;
 
   if (projectsState.selectedProjectId === null) {
-    content = <NewProject />;
+    content = <NewProject onAdd={handleAddProject} />;
   } else if (projectsState.selectedProjectId === undefined) {
     content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
   }
