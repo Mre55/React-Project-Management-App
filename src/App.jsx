@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 import ProjectsSidebar from "./components/ProjectsSideBar";
-import HomePage from "./components/HomePage";
+import HomePage from "./components/NoProjectSelected";
 import NewProject from "./components/NewProject";
 import ProjectItem from "./components/ProjectItem";
 import { DUMMY_ITEMS } from "./util/data";
+import NoProjectSelected from "./components/NoProjectSelected";
 
 function App() {
   const [items, setItems] = useState(DUMMY_ITEMS);
@@ -43,7 +44,8 @@ function App() {
         onOpenProject={handleOpenProject}
         items={items}
       />
-      <NewProject />
+      <NoProjectSelected />
+      {/* <NewProject /> */}
       {/* {mainPage.homePage && <HomePage onAdd={handleAddProject} />}
       {mainPage.newProject && <NewProject onSave={handleNewProject} />}
 
