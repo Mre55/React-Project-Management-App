@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import Input from "./Input";
 
 const NewProject = ({ onSave }) => {
   const titleRef = useRef(null);
@@ -27,7 +28,25 @@ const NewProject = ({ onSave }) => {
   };
 
   return (
-    <form
+    <div className="w-[35rem] mt-16">
+      <menu className="flex items-center justify-end gap-4 my-4">
+        <li>
+          <button className="text-stone-800 hover:text-stone-950">
+            Cancel
+          </button>
+        </li>
+        <li>
+          <button className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950">
+            Save
+          </button>
+        </li>
+      </menu>
+      <div>
+        <Input label={"Title"} />
+        <Input label={"Description"} textarea />
+        <Input label={"Due Date"} />
+      </div>
+      {/* <form
       className="absolute top-36 left-1/4 ml-12 w-7/12"
       onSubmit={handleSubmit}
     >
@@ -74,7 +93,8 @@ const NewProject = ({ onSave }) => {
           className="mt-2.5 mb-5 h-10 bg-[#d4cfc466] text-[#77736a] border-b-[#302f2d]-500 rounded-tl rounded-tr border-2 border-b-[#77736a] outline-none"
         />
       </div>
-    </form>
+    </form> */}
+    </div>
   );
 };
 
