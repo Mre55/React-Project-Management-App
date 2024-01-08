@@ -1,29 +1,24 @@
 import React, { useState, useRef } from "react";
 import Input from "./Input";
 
-const NewProject = ({ onSave }) => {
-  const titleRef = useRef(null);
-  const descriptionRef = useRef(null);
-  const dateInputRef = useRef(null);
+const NewProject = ({ onAdd }) => {
+  const title = useRef();
+  const description = useRef();
+  const dueDate = useRef();
 
-  const handleSubmit = (event) => {
+  const handleSave = (event) => {
     event.preventDefault();
 
-    const selectedDate = dateInputRef.current.value;
-    const dateObject = new Date(selectedDate);
+    const enteredTitle = title.current.value;
+    const enteredDescription = description.current.value;
+    const enteredDueDate = dueDate.current.value;
 
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    const formattedDate = dateObject.toLocaleDateString("en-US", options);
+    // validation...
 
-    onSave({
-      id: new Date(),
-      title: titleRef.current.value,
-      description: descriptionRef.current.value,
-      date: formattedDate,
+    onAdd({
+      title: enteredTitle,
+      description: enteredDescription,
+      dueDate: enteredDueDate,
     });
   };
 
@@ -36,15 +31,18 @@ const NewProject = ({ onSave }) => {
           </button>
         </li>
         <li>
-          <button className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950">
+          <button
+            className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950"
+            onClick={handleSave}
+          >
             Save
           </button>
         </li>
       </menu>
       <div>
-        <Input label={"Title"} />
-        <Input label={"Description"} textarea />
-        <Input label={"Due Date"} />
+        <Input type="text" ref={title} label={"Title"} />
+        <Input ref={description} label={"Description"} textarea />
+        <Input type="date" ref={dueDate} label={"Due Date"} />
       </div>
       {/* <form
       className="absolute top-36 left-1/4 ml-12 w-7/12"
