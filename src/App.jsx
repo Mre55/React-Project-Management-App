@@ -37,16 +37,17 @@ function App() {
   };
 
   return (
-    <main className="min-h-screen my-8">
+    <main className="min-h-screen my-8 flex gap-8">
       <ProjectsSidebar
         onAdd={handleAddProject}
         onOpenProject={handleOpenProject}
         items={items}
       />
-      {mainPage.homePage && <HomePage onAdd={handleAddProject} />}
+      <NewProject />
+      {/* {mainPage.homePage && <HomePage onAdd={handleAddProject} />}
       {mainPage.newProject && <NewProject onSave={handleNewProject} />}
 
-      <ProjectItem items={mainPage.projectItem} />
+      <ProjectItem items={mainPage.projectItem} /> */}
     </main>
   );
 }
