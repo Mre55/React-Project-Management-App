@@ -2,12 +2,9 @@ import { useState } from "react";
 
 import ProjectsSidebar from "./components/ProjectsSideBar";
 import NewProject from "./components/NewProject";
-import { DUMMY_ITEMS } from "./util/data";
 import NoProjectSelected from "./components/NoProjectSelected";
 
 function App() {
-  const [items, setItems] = useState(DUMMY_ITEMS);
-
   const [projectsState, setProjectsState] = useState({
     selectedProjectId: undefined,
     projects: [],
@@ -23,27 +20,20 @@ function App() {
   };
 
   const handleAddProject = (projectData) => {
+    const projectId = Math.random();
     const newProject = {
       ...projectData,
-      id: Math.random(),
+      id: projectId,
     };
 
     setProjectsState((prevState) => {
       return {
         ...prevState,
+        selectedProjectId: undefined,
         projects: [...prevState.projects, newProject],
       };
     });
   };
-
-  const handleOpenProject = (id) => {
-    const openFilteredItem = items.filter((item) => item.id === id);
-
-    setMainPage({ projectItem: openFilteredItem });
-    setSelectedProjectId(id);
-  };
-
-  console.log("projectsState is ", projectsState);
 
   let content;
 
@@ -57,8 +47,7 @@ function App() {
     <main className="min-h-screen my-8 flex gap-8">
       <ProjectsSidebar
         onStartAddProject={handleStartAddProject}
-        onOpenProject={handleOpenProject}
-        items={items}
+        projects={projectsState.projects}
       />
       {content}
     </main>
