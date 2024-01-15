@@ -1,43 +1,32 @@
-import React, { useRef } from "react";
+import { useState } from "react";
 
-const NewTask = () => {
-  const inputRef = useRef(null);
+const NewTask = ({ onAdd }) => {
+  const [enteredTask, setEnteredTask] = useState();
 
-  // const handleNewTask = (newTaskInputVal) => {
-  //   setCurrentItem((prevItem) => {
-  //     console.log("prevItem in handleNewTask is ", prevItem[0].tasks);
-  //     return [
-  //       ...prevItem,
-  //       prevItem[0].tasks.push({ id: new Date(), title: newTaskInputVal }),
-  //     ];
-  //   });
-  // };
+  const handleChange = (event) => {
+    setEnteredTask(event.target.value);
+  };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    setCurrentItem((prevItem) => {
-      return [
-        ...prevItem,
-        prevItem[0].tasks.push({
-          id: new Date(),
-          title: inputRef.current.value,
-        }),
-      ];
-    });
+  const handleClick = () => {
+    onAdd(enteredTask);
+    setEnteredTask("");
   };
 
   return (
-    <form className="flex items-center gap-x-12" onSubmit={handleSubmit}>
+    <div className="flex items-center gap-4">
       <input
-        ref={inputRef}
         type="text"
-        className="mt-2.5 pl-1 w-5/12 mb-5 h-10 bg-[#e1e0e0] text-[#77736a] border-b-[#302f2d]-500 rounded outline-none"
+        className="w-64 px-2 py-1 rounded-sm bg-stone-200"
+        onChange={handleChange}
+        value={enteredTask}
       />
-      <button className="m-0 text-xl tracking-wide text-[#4e4e4e]">
+      <button
+        className="text-stone-700 hover:text-stone-950"
+        onClick={handleClick}
+      >
         Add Task
       </button>
-    </form>
+    </div>
   );
 };
 
