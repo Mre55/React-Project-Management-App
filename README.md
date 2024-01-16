@@ -1,4 +1,4 @@
-# React Investment Calculator
+# React-Project-Management-App
 
 
 > This is a simple Application using `React`. The App is called `React Project Management App` and is a simple website where you can manage projects with tasks.
