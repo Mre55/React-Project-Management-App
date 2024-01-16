@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
-import Input from "./Input";
-import Modal from "./Modal";
+
+import Input from "./Input.jsx";
+import Modal from "./Modal.jsx";
 
 const NewProject = ({ onAdd, onCancel }) => {
   const modal = useRef();

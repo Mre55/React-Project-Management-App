@@ -1,5 +1,6 @@
 import React from "react";
-import NewTask from "./NewTask";
+
+import NewTask from "./NewTask.jsx";
 
 const ProjectItem = ({ items }) => {
 

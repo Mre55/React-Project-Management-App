@@ -1,4 +1,4 @@
-import NewTask from "./NewTask";
+import NewTask from "./NewTask.jsx";
 
 const Tasks = ({ tasks, onAdd, onDelete, selectedProjectId }) => {
   const selectedTasks = tasks.filter(
